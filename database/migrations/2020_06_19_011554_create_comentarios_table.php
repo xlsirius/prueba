@@ -17,8 +17,8 @@ class CreateComentariosTable extends Migration
             $table->integerIncrements('id_comentario');
             $table->string('comentirio');
             //DATOS DEL USUARIO QUE COMENTA EL SERVICIO
-            $table->integer('id')->unsigned();
-            $table->foreign('id')->references('id')->on('users');
+            $table->integer('id_servicio')->unsigned();
+            $table->foreign('id_servicio')->references('id_servicio')->on('sercicios');
             //-------------------------------------------------------------------------
             $table->timestamps();
         });

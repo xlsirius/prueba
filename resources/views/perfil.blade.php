@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">Mis Servicios</div>
+                <div class="card-header">Servicios</div>
 
                 <div class="card-body">
                     @if (session('status'))
@@ -17,34 +17,26 @@
                     <table class="table table-hover">
                           <thead>
                             <tr>
-                              <th scope="col">Codigo</th>
+                              <th scope="col">Usuario</th>
                               <th scope="col">Titulo</th>
                               <th scope="col">Descripcion</th>
                               <th  colspan="5" scope="col">Accion</th>
                             </tr>
                           </thead>
                           <tbody>
-                              @foreach ($servicio as $item)
+                              @foreach ($servicio_user as $item)
                               <tr>
-                                <th scope="row">{{$item->id_servicio }}</th>
+                                <th scope="row">{{$item->name_user}}</th>
                                 <td>{{$item->titulo}}</td>
                                 <td>{{$item->descripcion}}</td>
                                 <td>
-                                  <a href="{{ route ('editar_servicios', $item->id_servicio)}}" class="btn btn-danger">Actulizar</a>
+                                <a href=""  class="btn btn-danger">Adquirir</a>
                                 </td>
-                                <td>
-                                      <form  action="" class="d-inline" method="post">
-                                          @csrf
-                                          @method('DELETE')
-                                            <input type="submit" name="eliminar" class="btn btn-danger" value="eliminar">
-                                      </form>
-                                  </td>
-
                               </tr>
                               @endforeach
                           </tbody>
                     </table>
-                    {{$servicio->links()}}
+                    {{$servicio_user->links()}}
                 </div>
             </div>
         </div>

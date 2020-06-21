@@ -14,6 +14,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', 'GuestController@index'); // listar
+Route::get('/perfil{id}', 'GuestController@perfil')->name('perfil'); // perfil del usuario
+Route::get('/servicio{id}', 'GuestController@servicio')->name('servicio'); // perfil del usuario
 
 
 Auth::routes();

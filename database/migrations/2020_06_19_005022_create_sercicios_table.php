@@ -18,10 +18,11 @@ class CreateSerciciosTable extends Migration
             $table->string('titulo');
             $table->string('descripcion');
             $table->integer('valor');
-            //DATOS DEL USUARIO QUE PUBLICA EL SERVICIO
+            //ID DEL USUARIO QUE PUBLICA EL SERVICIO
             $table->integer('id')->unsigned();
             $table->foreign('id')->references('id')->on('users');
             //-------------------------------------------------------------------------
+            $table->string('name_user');
 
             $table->timestamps();
         });

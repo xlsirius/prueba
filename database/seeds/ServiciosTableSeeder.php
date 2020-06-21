@@ -17,7 +17,8 @@ class ServiciosTableSeeder extends Seeder
         $user->each( function($user){
 
             factory(sercicios::class,10)->create([
-                'id'=>$user->id
+                'id'=>$user->id,
+                'name_user'=>$user->name
             ]);
         });
 

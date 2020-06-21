@@ -37,12 +37,14 @@ class HomeController extends Controller
     public function proce_servicio(Request $request)
     {
         $usuarioId = auth()->user()->id;
+        $usuarioName = auth()->user()->name;
 
         $servicioNuevo = new sercicios;
         $servicioNuevo->titulo = $request->titulo;
         $servicioNuevo->descripcion = $request->descripcion;
         $servicioNuevo->valor= $request->valor;
         $servicioNuevo->id = $usuarioId;
+        $servicioNuevo->name_user = $usuarioName;
         $servicioNuevo->save();
 
         return back()->with('mensaje', 'Servicio agregado!');
@@ -50,14 +52,14 @@ class HomeController extends Controller
 
     public function editar_servicios($id)
     {
-        $servicio= sercicios::findOrFail($id);
+        $servicio= sercicios::where('id_servicio', $id)->get();
         return view('actualizar',compact('servicio'));
     }
     public function proce_actu_servicio(Request $request,$id)
     {
         $usuarioId = auth()->user()->id;
 
-       $servicioNuevo= sercicios::findOrFail($id);
+       $servicioNuevo= sercicios::where('id_servicio', $id);
        $servicioNuevo->titulo = $request->titulo;
        $servicioNuevo->descripcion = $request->descripcion;
        $servicioNuevo->valor= $request->valor;

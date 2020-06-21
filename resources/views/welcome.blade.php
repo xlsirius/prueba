@@ -9,6 +9,7 @@
         <td colspan="0">
             <div class="container" style="max-width: 4000px;" >
              <form class="form-group" action="">
+                 @csrf
                 <div class="form-group">
                   <label for="exampleDropdownFormEmail1">Nombre del servicio:</label>
                   <input type="text" class="form-control" id="exampleDropdownFormEmail1"
@@ -22,7 +23,11 @@
                         {{$item->descripcion}}
                     </textarea>
                  </div>
-                <button type="submit" class="btn btn-primary">Ver mas</button>
+                 <div class="form-group">
+                     <label for="">Usuario:</label>
+                     <a href=" {{ route('perfil', $item) }} " > {{ $item->name_user }}</a>
+                    </div>
+                <a href="{{route('servicio', $item->id_servicio)}}" class="btn btn-primary">Ver mas</a>
               </form>
             </div>
         </td>
