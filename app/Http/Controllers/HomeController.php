@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\sercicios;
+use App\comentarios;
 
 class HomeController extends Controller
 {
@@ -50,6 +51,17 @@ class HomeController extends Controller
         return back()->with('mensaje', 'Servicio agregado!');
     }
 
+    public function reg_comentario(Request $request,$id)
+    {
+        $id_reg= $id;
+        $ComentarioNuevo = new comentarios;
+        $ComentarioNuevo->comentirio=$request->get('comentirio');
+        $ComentarioNuevo->id_servicio= $id_reg;
+        $ComentarioNuevo->save();
+        return back()->with('mensaje', 'Comentario agregado!');
+        //return($ComentarioNuevo);
+    }
+
     public function editar_servicios($id)
     {
         $servicio= sercicios::where('id_servicio', $id)->get();
@@ -59,13 +71,19 @@ class HomeController extends Controller
     {
         $usuarioId = auth()->user()->id;
 
-       $servicioNuevo= sercicios::where('id_servicio', $id);
-       $servicioNuevo->titulo = $request->titulo;
-       $servicioNuevo->descripcion = $request->descripcion;
-       $servicioNuevo->valor= $request->valor;
-       $servicioNuevo->id = $usuarioId;
-       $servicioNuevo->save();
+       $servicioNuevo= sercicios::where('id_servicio', $id)
+       ->update(
+           ['descripcion' => $request->descripcion,'titulo' => $request->titulo,'valor' => $request->valor]);
 
        return back()->with('mensaje', 'Servicio actulizado!');
     }
+
+ public function proce_eliminar_servicio($id)
+ {
+     $servicio= sercicios::where('id_servicio', $id)->delete();
+     $usuarioId = auth()->user()->id;
+     $servicio = sercicios::where('id', $usuarioId)->paginate(5);
+     return back()->with('status', 'Servicio eliminado!');;
+ }
+
 }

@@ -33,9 +33,10 @@
                                   <a href="{{ route ('editar_servicios', $item->id_servicio)}}" class="btn btn-danger">Actulizar</a>
                                 </td>
                                 <td>
-                                      <form  action="" class="d-inline" method="post">
+                                      <form  action="{{ route ('eliminar_reg',$item->id_servicio) }}" class="d-inline" method="post">
                                           @csrf
                                           @method('DELETE')
+
                                             <input type="submit" name="eliminar" class="btn btn-danger" value="eliminar">
                                       </form>
                                   </td>

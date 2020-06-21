@@ -25,7 +25,29 @@
     <td>{{$item->valor}}</td>
 </tr>
 <tr>
-    <td><input type="submit" class="btn btn-danger" value="Adquirir"></td>
+    <td>
+        <form class="" action="index.html" method="post">
+
+        <input type="submit" class="btn btn-danger" value="Adquirir">
+
+        </form>
+    </td>
+</tr>
+<tr>
+    <td>
+        <form class="form-group" action="{{ route ('reg_comentario',$item->id_servicio)}}" method="post">
+        @csrf
+        <textarea class="form-control" id="comentirio" name="comentirio" cols="50" rows="3"></textarea>
+        <input type="submit" class="btn btn-danger" value="Comentar">
+    </td>
+</tr>
+</form>
+<tr>
+    <td>
+        @if ( session('mensaje') )
+            <div class="alert alert-success">{{ session('mensaje') }}</div>
+        @endif
+    </td>
 </tr>
 </tbody>
 @endforeach

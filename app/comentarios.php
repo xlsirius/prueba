@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class comentarios extends Model
 {
-    public function user(){
-      return $this->belongsTo(User::class); //Pertenece a una categoría.
+    public function sercicios(){
+      return $this->belongsTo(sercicios::class); //Pertenece a una categoría.
   }
 }

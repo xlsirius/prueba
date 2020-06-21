@@ -20,7 +20,9 @@ class CreateSerciciosTable extends Migration
             $table->integer('valor');
             //ID DEL USUARIO QUE PUBLICA EL SERVICIO
             $table->integer('id')->unsigned();
-            $table->foreign('id')->references('id')->on('users');
+            $table->foreign('id')->references('id')->on('users')
+            ->onDelete('cascade');
+
             //-------------------------------------------------------------------------
             $table->string('name_user');
 
