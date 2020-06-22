@@ -19,14 +19,17 @@
                   <label for="exampleDropdownFormPassword1">Descripcion</label>
               </div>
               <div class="form-group">
-                    <textarea class="form-group" name="name" rows="3" cols="40">
+                    <textarea class="form-group" name="name" rows="3" cols="40" disabled>
                         {{$item->descripcion}}
                     </textarea>
                  </div>
                  <div class="form-group">
+                      <label for="">Estado: </label> <label style="color:blue;">{{$item->estado}}</label>
+                 </div>
+                 <div class="form-group">
                      <label for="">Usuario:</label>
                      <a href=" {{ route('perfil', $item) }} " > {{ $item->name_user }}</a>
-                    </div>
+                </div>
                 <a href="{{route('servicio', $item->id_servicio)}}" class="btn btn-primary">Ver mas</a>
               </form>
             </div>

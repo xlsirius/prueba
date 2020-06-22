@@ -8,9 +8,9 @@
                 <div class="card-header">Servicios</div>
 
                 <div class="card-body">
-                    @if (session('status'))
+                    @if (session('mensaje'))
                         <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
+                            {{ session('mensaje') }}
                         </div>
                     @endif
 
@@ -20,6 +20,7 @@
                               <th scope="col">Usuario</th>
                               <th scope="col">Titulo</th>
                               <th scope="col">Descripcion</th>
+                              <th scope="col">Estado</th>
                               <th  colspan="5" scope="col">Accion</th>
                             </tr>
                           </thead>
@@ -29,8 +30,12 @@
                                 <th scope="row">{{$item->name_user}}</th>
                                 <td>{{$item->titulo}}</td>
                                 <td>{{$item->descripcion}}</td>
+                                <td>{{$item->estado}}</td>
                                 <td>
-                                <a href=""  class="btn btn-danger">Adquirir</a>
+                                    <form class="" action="{{ route ('adquirir',$item->id_servicio)}}" method="post">
+                                    @csrf
+                                    <input type="submit" class="btn btn-danger" value="Adquirir">
+                                    </form>
                                 </td>
                               </tr>
                               @endforeach

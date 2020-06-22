@@ -25,7 +25,7 @@ class CreateSerciciosTable extends Migration
 
             //-------------------------------------------------------------------------
             $table->string('name_user');
-
+            $table->string('estado');
             $table->timestamps();
         });
     }

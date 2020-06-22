@@ -26,10 +26,9 @@
 </tr>
 <tr>
     <td>
-        <form class="" action="index.html" method="post">
-
+        <form class="" action="{{ route ('adquirir',$item->id_servicio)}}" method="post">
+        @csrf
         <input type="submit" class="btn btn-danger" value="Adquirir">
-
         </form>
     </td>
 </tr>

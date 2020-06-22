@@ -11,9 +11,12 @@ class GuestController extends Controller
 {
     public function index()
     {
+        $estado= "Disponible";
         $servicio = sercicios::with('user')
+        ->where('estado',$estado)
         ->orderByDesc('created_at')
         ->orderByDesc('id_servicio')
+        ->orderByDesc('estado')
         ->paginate(3);
         return view('welcome',compact('servicio'));
     }

@@ -46,6 +46,7 @@ class HomeController extends Controller
         $servicioNuevo->valor= $request->valor;
         $servicioNuevo->id = $usuarioId;
         $servicioNuevo->name_user = $usuarioName;
+        $servicioNuevo->estado = "Disponible";
         $servicioNuevo->save();
 
         return back()->with('mensaje', 'Servicio agregado!');
@@ -84,6 +85,16 @@ class HomeController extends Controller
      $usuarioId = auth()->user()->id;
      $servicio = sercicios::where('id', $usuarioId)->paginate(5);
      return back()->with('status', 'Servicio eliminado!');;
+ }
+
+  public function adquirir($id)
+ {
+     $estado= "Adquirido";
+     $servicioNuevo= sercicios::where('id_servicio', $id)
+     ->update(
+         ['estado' => $estado]);
+
+     return back()->with('mensaje', 'Servicio Adquirido!');
  }
 
 }

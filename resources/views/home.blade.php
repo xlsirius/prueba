@@ -20,6 +20,7 @@
                               <th scope="col">Codigo</th>
                               <th scope="col">Titulo</th>
                               <th scope="col">Descripcion</th>
+                              <th scope="col">Estado</th>
                               <th  colspan="5" scope="col">Accion</th>
                             </tr>
                           </thead>
@@ -29,6 +30,7 @@
                                 <th scope="row">{{$item->id_servicio }}</th>
                                 <td>{{$item->titulo}}</td>
                                 <td>{{$item->descripcion}}</td>
+                                <td>{{$item->estado}}</td>
                                 <td>
                                   <a href="{{ route ('editar_servicios', $item->id_servicio)}}" class="btn btn-danger">Actulizar</a>
                                 </td>
