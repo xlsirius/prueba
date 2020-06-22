@@ -47,6 +47,7 @@ class HomeController extends Controller
         $servicioNuevo->id = $usuarioId;
         $servicioNuevo->name_user = $usuarioName;
         $servicioNuevo->estado = "Disponible";
+        $servicioNuevo->adquirido = 0;
         $servicioNuevo->save();
 
         return back()->with('mensaje', 'Servicio agregado!');
@@ -89,12 +90,28 @@ class HomeController extends Controller
 
   public function adquirir($id)
  {
+     $adquirido= auth()->user()->id;
      $estado= "Adquirido";
      $servicioNuevo= sercicios::where('id_servicio', $id)
      ->update(
-         ['estado' => $estado]);
+         ['estado' => $estado,'adquirido'=>$adquirido]
+     );
 
      return back()->with('mensaje', 'Servicio Adquirido!');
  }
+
+public function adquisiciones()
+{
+    $usuarioId = auth()->user()->id;
+    $estado= "Adquirido";
+    $servicio = sercicios::with('user')
+    ->where('adquirido',$usuarioId)
+    ->where('estado',$estado)
+    ->orderByDesc('created_at')
+    ->orderByDesc('id_servicio')
+    ->orderByDesc('estado')
+    ->paginate(3);
+    return view('adquisiciones',compact('servicio'));
+}
 
 }

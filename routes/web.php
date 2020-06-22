@@ -28,3 +28,4 @@ Route::get('/actualizar_servicios/{id}', 'HomeController@editar_servicios')->nam
 Route::put('proce_actu/{id}', 'HomeController@proce_actu_servicio')->name('proce_actu'); // proceso editar
 Route::delete('proce_eliminar/{id}', 'HomeController@proce_eliminar_servicio')->name('eliminar_reg'); // proceso editar
 Route::post('adquirir/{id}', 'HomeController@adquirir')->name('adquirir'); // proceso adquirir
+Route::get('/adquisiciones', 'HomeController@adquisiciones')->name('adquisiciones'); // mis adquisiciones

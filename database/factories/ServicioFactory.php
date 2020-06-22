@@ -12,7 +12,8 @@ $factory->define(sercicios::class, function (Faker $faker) {
         'descripcion'=> $faker->text,
         'valor'=> 2000,
         'id'=>1,
-        'estado'=>'Disponible'
+        'estado'=>'Disponible',
+        'adquirido'=>0
 
     ];
 });
